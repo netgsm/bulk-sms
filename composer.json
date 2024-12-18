@@ -1,5 +1,6 @@
 {
     "name": "netgsm/bulk-sms",
+    "version": "1.1",
     "description": "Netgsm Sms ",
     "type": "package",
     "license": "MIT",

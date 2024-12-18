@@ -13,19 +13,15 @@ class SmsSender
      * @param array $data Gönderilecek veri
      * @return mixed API'den dönen cevap
      */
-    public static function post(array $data)
+    public static function post( $data)
     {
-        try {
-
-            
-            json_encode($data);
-
-            // POST isteği gönder
-            $response = Helper::curl($data);
-
-            // Yanıtı ekrana yazdır
-            return $response;
-        } catch (Exception $e) {
+       
+        if (!is_object($data)) {
+            throw new \Exception('The provided data is not an object.', 406);  
         }
+
+        $response = Helper::curl($data);
+
+        return $response;
     }
 }

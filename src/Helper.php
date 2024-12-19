@@ -7,14 +7,13 @@ class Helper
     /**
      * Netgsm API'ye JSON POST isteği gönderme.
      *
-     * @param string $url Netgsm API URL'si
+     
      * @param array $data Gönderilecek veri
      * @return mixed API'den dönen cevap
      */
     public static function curl($data)
     {
         
-        // .env dosyasından API bilgilerini al
         $username = env('NETGSM_USERNAME');
         $password = env('NETGSM_PASSWORD');
         $url = env('NETGSM_URL');

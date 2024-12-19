@@ -3,6 +3,7 @@
 namespace Netgsm\Service;
 
 use Exception;
+use Service;
 
 class SmsSender
 {
@@ -15,11 +16,11 @@ class SmsSender
      */
     public static function post( $data)
     {
-       
+       $url="https://api.netgsm.com.tr/sms/send/rest/v1";
         if (!is_object($data)) {
             throw new \Exception('The provided data is not an object.', 406);  
         }
-        $response = Helper::curl($data);
+        $response = Helper::curl($data,$url,Service::SmsSend->value);
 
         return $response;
     }

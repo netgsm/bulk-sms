@@ -13,8 +13,11 @@ class Helper
      * @param array $data Gönderilecek veri
      * @return mixed API'den dönen cevap
      */
-    public static function curl(object $data,string $url,string $service)
+    public static function curl( $data,string $url,string $service)
     {
+        if (!is_object($data)) {
+            throw new \Exception('The provided data is not an object.', 406);  
+        }
         $username = env('NETGSM_USERNAME');
         $password = env('NETGSM_PASSWORD');
         

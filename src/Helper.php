@@ -1,8 +1,8 @@
 <?php
 
-namespace Netgsm\Service;
+namespace Netgsm;
 
-use Service;
+use Netgsm\Enums\ServiceName;
 
 class Helper
 {
@@ -13,7 +13,7 @@ class Helper
      * @param array $data Gönderilecek veri
      * @return mixed API'den dönen cevap
      */
-    public static function curl(object $data,string $url,string $service=null)
+    public static function curl(object $data,string $url,string $service)
     {
         $username = env('NETGSM_USERNAME');
         $password = env('NETGSM_PASSWORD');
@@ -30,8 +30,7 @@ class Helper
             'Content-Length: ' . strlen($data),
         ];
         
-       
-        if ($service == Service::SmsSend && !empty($username) && !empty($password)) {
+        if ($service==ServiceName::SmsSend->value && !empty($username) && !empty($password)) {
             $authHeader = 'Authorization: Basic ' . base64_encode("$username:$password");
             $headers[] = $authHeader; // Header listesine ekle
         }

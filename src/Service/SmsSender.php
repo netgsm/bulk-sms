@@ -3,7 +3,9 @@
 namespace Netgsm\Service;
 
 use Exception;
-use Service;
+use Netgsm\Enums\ServiceName;
+use Netgsm\Helper;
+
 
 class SmsSender
 {
@@ -20,7 +22,7 @@ class SmsSender
         if (!is_object($data)) {
             throw new \Exception('The provided data is not an object.', 406);  
         }
-        $response = Helper::curl($data,$url,Service::SmsSend->value);
+        $response = Helper::curl($data,$url,ServiceName::SmsSend->value);
 
         return $response;
     }
